@@ -65,10 +65,6 @@ Start [minikube](https://github.com/kubernetes/minikube) cluster:
 ```
 
 ```bash
-~$ kubectl get pod
-```
-
-```bash
 ~$ kubectl get pod --watch --output wide
 ```
 
@@ -80,4 +76,10 @@ Start [minikube](https://github.com/kubernetes/minikube) cluster:
 ~$ minikube service mongo-express-service
 ```
 
+```bash
+~$ minikube stop
+```
 
+```bash
+~$ minikue delete --all
+```
