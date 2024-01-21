@@ -35,7 +35,8 @@ flowchart LR
 ```
 
 ```bash
-~$ kubectly describe pod <pod-name-here>
+~$ kubectly describe pod <pod-name-here> # copy pod name from "kubectl get pod" output
 ```
+
 
 
