@@ -12,6 +12,12 @@ flowchart LR
     B --> C["Mongo Express"]
     C --> D["Internal<br>Service"]
     D --> E["<span>&#9921;</span><br>MongoDB<br>database"]
+    F["MongoDB<br>Secret<br>"] --> E
+```
+
+Start [minikube](https://github.com/kubernetes/minikube) cluster:
+```bash
+~$ minikube start
 ```
 
 ```bash
@@ -31,12 +37,47 @@ flowchart LR
 ```
 
 ```bash
-~$ kubectl get pod --watch
+~$ kubectl get pod --watch --output wide
 ```
 
 ```bash
-~$ kubectly describe pod <pod-name-here> # copy pod name from "kubectl get pod" output
+~$ kubectl describe pod <pod-name-here> # copy pod name from "kubectl get pod" output
 ```
 
+```bash
+~$ kubectl describe service mongodb-service
+```
+
+```bash
+~$ kubectl get all | grep mongodb
+```
+
+```bash
+~$ kubectl apply -f configs/mongo-configmap.yaml
+```
+
+```bash
+~$ kubectl apply -f configs/mongo-express.yaml
+```
+
+```bash
+~$ kubectl get service
+```
+
+```bash
+~$ kubectl get pod
+```
+
+```bash
+~$ kubectl get pod --watch --output wide
+```
+
+```bash
+~$ kubectl logs <pod-name-here> # get pod name from "kubectl get pod" output
+```
+
+```bash
+~$ minikube service mongo-express-service
+```
 
 
