@@ -53,6 +53,35 @@ Start [minikube](https://github.com/kubernetes/minikube) cluster:
 ```
 
 ```bash
+# start interactive mongo shell inside mongodb container 
+~$ kubectl exec --stdin --tty <pod-name-here> -- mongosh --authenticationDatabase admin my-db-name
+my-db-name> db.dogs.insertOne({"name":"brock", "breed":"pavement-special"}) 
+MongoServerError: command insert requires authentication
+my-db-name> use admin
+switched to db admin
+admin> db.auth("joe")
+Enter password
+whyAreYouDecodingThis
+*********************{ ok: 1 }
+admin> use my-db-name
+switched to db my-db-name
+my-db-name> db.dogs.insertOne({"name":"brock", "breed":"pavement-special"}) 
+{
+  acknowledged: true,
+  insertedId: ObjectId('65b01a77abf089857b8825b3')
+}
+my-db-name> db.dogs.find({"name":"brock"}) 
+[
+  {
+    _id: ObjectId('65b01a77abf089857b8825b3'),
+    name: 'brock',
+    breed: 'pavement-special'
+  }
+]
+my-db-name> exit
+```
+
+```bash
 ~$ kubectl apply -f configs/mongo-configmap.yaml
 ```
 
