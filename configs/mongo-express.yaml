@@ -37,6 +37,10 @@ spec:
               configMapKeyRef:
                 name: mongo-configmap # see configs/mongo-configmap.yaml
                 key: database-url
+          - name: ME_CONFIG_BASICAUTH_USERNAME # username for browser UI
+            value: localdev 
+          - name: ME_CONFIG_BASICAUTH_PASSWORD # password for browser UI
+            value: password1234
 ---
 apiVersion: v1
 kind: Service
